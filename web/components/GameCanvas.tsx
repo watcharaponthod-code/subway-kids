@@ -11,6 +11,8 @@ export default function GameCanvas() {
   const canvasRef    = useRef<HTMLCanvasElement>(null);
   const engineRef    = useRef<Game3D | null>(null);
   const wsRef        = useRef<WebSocket | null>(null);
+  const videoRef     = useRef<HTMLVideoElement | null>(null);
+  const captureCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const [snap, setSnap]       = useState<GameSnapshot>({ score: 0, lives: 3, status: "idle", lane: 1 });
   const [wsOk, setWsOk]       = useState(false);
   const [started, setStarted] = useState(false);
@@ -49,6 +51,34 @@ export default function GameCanvas() {
     setStarted(true);
     connectWS();
 
+    // Setup Camera
+    const startCamera = async () => {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { width: 320, height: 240 } });
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
+          videoRef.current.play();
+        }
+      } catch (err) {
+        console.error("Camera access denied:", err);
+      }
+    };
+    startCamera();
+
+    // Frame Capture Loop
+    const captureInterval = setInterval(() => {
+      if (wsRef.current?.readyState === WebSocket.OPEN && videoRef.current && captureCanvasRef.current) {
+        const cvs = captureCanvasRef.current;
+        const vid = videoRef.current;
+        const ctx = cvs.getContext("2d");
+        if (ctx) {
+          ctx.drawImage(vid, 0, 0, cvs.width, cvs.height);
+          const imageData = cvs.toDataURL("image/jpeg", 0.5);
+          wsRef.current.send(JSON.stringify({ image: imageData }));
+        }
+      }
+    }, 100);
+
     // Responsive resize
     const ro = new ResizeObserver((entries) => {
       const { width: w, height: h } = entries[0].contentRect;
@@ -76,6 +106,10 @@ export default function GameCanvas() {
       wsRef.current?.close();
       ro.disconnect();
       window.removeEventListener("keydown", onKey);
+      clearInterval(captureInterval);
+      if (videoRef.current?.srcObject) {
+        (videoRef.current.srcObject as MediaStream).getTracks().forEach(track => track.stop());
+      }
     };
   }, [connectWS, started]);
 
@@ -83,6 +117,10 @@ export default function GameCanvas() {
 
   return (
     <div ref={containerRef} className="relative w-full h-full bg-black select-none">
+      {/* Hidden Camera Elements */}
+      <video ref={videoRef} className="hidden" playsInline muted />
+      <canvas ref={captureCanvasRef} className="hidden" width={320} height={240} />
+
       {/* Three.js canvas */}
       <canvas ref={canvasRef} className="w-full h-full block" />
 

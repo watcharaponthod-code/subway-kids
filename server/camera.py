@@ -15,11 +15,10 @@ RIGHT_ZONE   = 0.62   # body-center x > this  → lane 2 (right)
 
 class PoseCamera:
     def __init__(self):
-        self.cap  = cv2.VideoCapture(CAMERA_INDEX)
-        self.cap.set(cv2.CAP_PROP_FRAME_WIDTH,  CAMERA_W)
-        self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, CAMERA_H)
-        self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)   # reduce latency
-
+        # We no longer strictly need cv2.VideoCapture if the browser sends frames.
+        # But we'll keep it as an optional fallback or just remove it if we want to be clean.
+        self.cap = None 
+        
         mp_pose = mp.solutions.pose
         self.pose = mp_pose.Pose(
             model_complexity=0,
@@ -27,36 +26,41 @@ class PoseCamera:
             min_tracking_confidence=0.5,
         )
         self.mp_pose    = mp_pose
+        self.mp_drawing = mp.solutions.drawing_utils
         self.current_lane = 1
-        self.active     = self.cap.isOpened()
+        self.active = True
 
-    def update(self) -> int:
-        if not self.active:
-            return self.current_lane
+    def process_frame(self, frame):
+        """Processes a single frame and returns (lane, jump, processed_frame)"""
+        lane = 1
+        jump = False
+        
+        # Mirror and process
+        frame = cv2.flip(frame, 1)
+        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        results = self.pose.process(rgb)
 
-        ret, frame = self.cap.read()
-        if not ret:
-            return self.current_lane
+        if results.pose_landmarks:
+            lm = results.pose_landmarks.landmark
+            # Center of hips
+            left_hip = lm[self.mp_pose.PoseLandmark.LEFT_HIP]
+            right_hip = lm[self.mp_pose.PoseLandmark.RIGHT_HIP]
+            nose = lm[self.mp_pose.PoseLandmark.NOSE]
+            
+            cx = (left_hip.x + right_hip.x) / 2.0
+            if cx < LEFT_ZONE: lane = 0
+            elif cx > RIGHT_ZONE: lane = 2
+            
+            # Jump: nose height (lower Y is higher in image)
+            if nose.y < 0.3: jump = True
 
-        frame  = cv2.flip(frame, 1)                         # mirror
-        rgb    = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        result = self.pose.process(rgb)
+            # Draw pose
+            self.mp_drawing.draw_landmarks(
+                frame, results.pose_landmarks, self.mp_pose.POSE_CONNECTIONS)
 
-        if result.pose_landmarks:
-            lm       = result.pose_landmarks.landmark
-            LEFT_HIP  = lm[self.mp_pose.PoseLandmark.LEFT_HIP]
-            RIGHT_HIP = lm[self.mp_pose.PoseLandmark.RIGHT_HIP]
-            cx        = (LEFT_HIP.x + RIGHT_HIP.x) / 2.0   # 0.0–1.0
-
-            if cx < LEFT_ZONE:
-                self.current_lane = 0
-            elif cx > RIGHT_ZONE:
-                self.current_lane = 2
-            else:
-                self.current_lane = 1
-
-        return self.current_lane
+        return lane, jump, frame
 
     def release(self):
-        self.cap.release()
+        if self.cap:
+            self.cap.release()
         self.pose.close()

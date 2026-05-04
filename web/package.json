@@ -8,16 +8,19 @@
     "start": "next start"
   },
   "dependencies": {
+    "@react-three/drei": "9.122.0",
+    "@react-three/fiber": "8.17.14",
     "next": "14.2.0",
     "react": "^18",
     "react-dom": "^18",
-    "three": "^0.165.0"
+    "three": "0.174.0",
+    "three-fbx-loader": "^1.0.3"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "@types/three": "^0.165.0",
+    "@types/three": "^0.174.0",
     "autoprefixer": "^10",
     "postcss": "^8",
     "tailwindcss": "^3",
