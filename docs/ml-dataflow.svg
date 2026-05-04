@@ -1,0 +1,248 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1020" width="1100" height="1020"
+     font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <filter id="card-shadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#00000022"/>
+    </filter>
+    <filter id="section-shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="#00000015"/>
+    </filter>
+    <marker id="arr" markerWidth="9" markerHeight="6" refX="9" refY="3" orient="auto">
+      <polygon points="0 0,9 3,0 6" fill="#64748b"/>
+    </marker>
+    <marker id="arr-blue" markerWidth="9" markerHeight="6" refX="9" refY="3" orient="auto">
+      <polygon points="0 0,9 3,0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arr-orange" markerWidth="9" markerHeight="6" refX="9" refY="3" orient="auto">
+      <polygon points="0 0,9 3,0 6" fill="#f97316"/>
+    </marker>
+    <marker id="arr-purple" markerWidth="9" markerHeight="6" refX="9" refY="3" orient="auto">
+      <polygon points="0 0,9 3,0 6" fill="#8b5cf6"/>
+    </marker>
+    <marker id="arr-green" markerWidth="9" markerHeight="6" refX="9" refY="3" orient="auto">
+      <polygon points="0 0,9 3,0 6" fill="#10b981"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="1020" fill="#f1f5f9" rx="16"/>
+
+  <!-- TITLE -->
+  <rect x="30" y="18" width="1040" height="52" rx="10" fill="#1e293b" filter="url(#card-shadow)"/>
+  <text x="550" y="39" text-anchor="middle" font-size="11" fill="#94a3b8" letter-spacing="3">SUBWAY KIDS</text>
+  <text x="550" y="58" text-anchor="middle" font-size="18" font-weight="700" fill="white" letter-spacing="1">ML Data Flow Architecture</text>
+
+  <!-- SECTION 1: INPUT -->
+  <rect x="30" y="90" width="1040" height="155" rx="12" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#section-shadow)"/>
+  <text x="55" y="112" font-size="11" font-weight="700" fill="#3b82f6" letter-spacing="2">INPUT LAYER</text>
+
+  <!-- LOCAL MODE card -->
+  <rect x="55" y="120" width="250" height="110" rx="10" fill="white" stroke="#3b82f6" stroke-width="2" filter="url(#card-shadow)"/>
+  <rect x="75" y="135" width="36" height="26" rx="4" fill="#3b82f6"/>
+  <circle cx="93" cy="148" r="7" fill="white"/>
+  <circle cx="93" cy="148" r="4" fill="#3b82f6"/>
+  <polygon points="111,136 122,130 122,166 111,160" fill="#2563eb"/>
+  <text x="180" y="150" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">Local Mode</text>
+  <text x="180" y="168" text-anchor="middle" font-size="11" fill="#475569">OpenCV VideoCapture</text>
+  <rect x="135" y="176" width="90" height="18" rx="4" fill="#dbeafe"/>
+  <text x="180" y="188" text-anchor="middle" font-size="10" fill="#1e40af">640 x 480 px</text>
+  <text x="180" y="218" text-anchor="middle" font-size="10" fill="#64748b">cv2.VideoCapture(0)</text>
+
+  <!-- OR badge -->
+  <circle cx="330" cy="175" r="18" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="330" y="180" text-anchor="middle" font-size="12" font-weight="700" fill="#475569">OR</text>
+
+  <!-- WEB MODE card -->
+  <rect x="360" y="120" width="250" height="110" rx="10" fill="white" stroke="#f97316" stroke-width="2" filter="url(#card-shadow)"/>
+  <rect x="375" y="133" width="42" height="32" rx="5" fill="#f97316"/>
+  <rect x="378" y="146" width="36" height="16" rx="2" fill="white"/>
+  <circle cx="381" cy="139" r="3" fill="#fed7aa"/>
+  <circle cx="390" cy="139" r="3" fill="#fef3c7"/>
+  <circle cx="399" cy="139" r="3" fill="#bbf7d0"/>
+  <text x="485" y="150" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">Web Mode</text>
+  <text x="485" y="168" text-anchor="middle" font-size="11" fill="#475569">Browser Camera</text>
+  <rect x="440" y="176" width="90" height="18" rx="4" fill="#ffedd5"/>
+  <text x="485" y="188" text-anchor="middle" font-size="10" fill="#9a3412">getUserMedia API</text>
+  <text x="485" y="218" text-anchor="middle" font-size="10" fill="#64748b">Canvas to Base64 to WebSocket</text>
+
+  <!-- FastAPI Server card -->
+  <rect x="680" y="120" width="360" height="110" rx="10" fill="white" stroke="#f97316" stroke-width="2" stroke-dasharray="6,3" filter="url(#card-shadow)"/>
+  <rect x="700" y="135" width="32" height="8" rx="3" fill="#f97316"/>
+  <rect x="700" y="149" width="32" height="8" rx="3" fill="#fb923c"/>
+  <rect x="700" y="163" width="32" height="8" rx="3" fill="#fdba74"/>
+  <circle cx="728" cy="139" r="3" fill="#fef9c3"/>
+  <circle cx="728" cy="153" r="3" fill="#fef9c3"/>
+  <circle cx="728" cy="167" r="3" fill="#fef9c3"/>
+  <text x="860" y="148" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">FastAPI Server</text>
+  <text x="860" y="166" text-anchor="middle" font-size="11" fill="#475569">WebSocket /ws endpoint</text>
+  <text x="860" y="184" text-anchor="middle" font-size="10" fill="#64748b">Receives Base64 frame, decodes, processes</text>
+  <text x="860" y="200" text-anchor="middle" font-size="10" fill="#64748b">Returns: lane + jump + annotated frame</text>
+  <rect x="756" y="207" width="210" height="16" rx="4" fill="#ffedd5"/>
+  <text x="861" y="218" text-anchor="middle" font-size="9" fill="#9a3412" font-style="italic">server/main.py  +  server/camera.py</text>
+
+  <!-- Arrow: Web card to FastAPI -->
+  <line x1="611" y1="175" x2="678" y2="175" stroke="#f97316" stroke-width="2" marker-end="url(#arr-orange)" stroke-dasharray="5,3"/>
+  <text x="644" y="169" text-anchor="middle" font-size="9" fill="#f97316">WS frame</text>
+
+  <!-- SECTION 2: PREPROCESSING -->
+  <rect x="30" y="265" width="1040" height="95" rx="12" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1.5" filter="url(#section-shadow)"/>
+  <text x="55" y="285" font-size="11" font-weight="700" fill="#8b5cf6" letter-spacing="2">PREPROCESSING</text>
+
+  <rect x="230" y="292" width="340" height="55" rx="10" fill="white" stroke="#8b5cf6" stroke-width="2" filter="url(#card-shadow)"/>
+  <text x="400" y="316" text-anchor="middle" font-size="13" font-weight="700" fill="#6d28d9">Frame Preprocessing  (Local)</text>
+  <text x="400" y="335" text-anchor="middle" font-size="11" fill="#475569">cv2.flip(frame, 1)  then  cvtColor BGR to RGB</text>
+
+  <rect x="720" y="292" width="300" height="55" rx="10" fill="white" stroke="#f97316" stroke-width="2" stroke-dasharray="6,3" filter="url(#card-shadow)"/>
+  <text x="870" y="316" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">Frame Preprocessing  (Web)</text>
+  <text x="870" y="335" text-anchor="middle" font-size="11" fill="#475569">Base64 decode, imdecode, flip + RGB</text>
+
+  <!-- Arrow: local cam to preprocess -->
+  <line x1="180" y1="230" x2="350" y2="291" stroke="#3b82f6" stroke-width="2" marker-end="url(#arr-blue)"/>
+  <!-- Arrow: FastAPI to preprocess-web -->
+  <line x1="870" y1="230" x2="870" y2="290" stroke="#f97316" stroke-width="2" marker-end="url(#arr-orange)" stroke-dasharray="5,3"/>
+
+  <!-- SECTION 3: AI MODEL -->
+  <rect x="30" y="380" width="1040" height="165" rx="12" fill="#fdf4ff" stroke="#e9d5ff" stroke-width="1.5" filter="url(#section-shadow)"/>
+  <text x="55" y="400" font-size="11" font-weight="700" fill="#9333ea" letter-spacing="2">AI MODEL  --  MEDIAPIPE POSE</text>
+
+  <!-- MediaPipe main card -->
+  <rect x="170" y="408" width="460" height="125" rx="10" fill="white" stroke="#9333ea" stroke-width="2.5" filter="url(#card-shadow)"/>
+  <text x="400" y="432" text-anchor="middle" font-size="15" font-weight="700" fill="#7e22ce">MediaPipe Pose  (Lite)</text>
+  <text x="400" y="452" text-anchor="middle" font-size="11" fill="#475569">model_complexity = 0   (fastest mode)</text>
+  <text x="400" y="470" text-anchor="middle" font-size="11" fill="#475569">min_detection_confidence = 0.5</text>
+  <text x="400" y="488" text-anchor="middle" font-size="11" fill="#475569">min_tracking_confidence = 0.5</text>
+  <rect x="210" y="498" width="380" height="22" rx="6" fill="#faf5ff"/>
+  <text x="400" y="513" text-anchor="middle" font-size="11" font-weight="600" fill="#7e22ce">Output: 33 Body Landmarks (x, y, z, visibility)</text>
+
+  <!-- Landmarks detail card -->
+  <rect x="660" y="408" width="370" height="125" rx="10" fill="white" stroke="#c084fc" stroke-width="1.5" filter="url(#card-shadow)"/>
+  <text x="845" y="430" text-anchor="middle" font-size="13" font-weight="700" fill="#7e22ce">Key Landmarks Used</text>
+  <rect x="675" y="438" width="160" height="83" rx="6" fill="#faf5ff"/>
+  <text x="755" y="456" text-anchor="middle" font-size="11" font-weight="600" fill="#6d28d9">Hip Center</text>
+  <text x="755" y="473" text-anchor="middle" font-size="10" fill="#475569">LEFT_HIP  (idx 23)</text>
+  <text x="755" y="489" text-anchor="middle" font-size="10" fill="#475569">RIGHT_HIP (idx 24)</text>
+  <text x="755" y="505" text-anchor="middle" font-size="10" fill="#64748b">avg(left.x, right.x)</text>
+  <text x="755" y="517" text-anchor="middle" font-size="9" fill="#9333ea">= body center X</text>
+  <rect x="845" y="438" width="170" height="83" rx="6" fill="#fff7ed"/>
+  <text x="930" y="456" text-anchor="middle" font-size="11" font-weight="600" fill="#c2410c">Jump Detection</text>
+  <text x="930" y="473" text-anchor="middle" font-size="10" fill="#475569">NOSE  (idx 0)</text>
+  <text x="930" y="489" text-anchor="middle" font-size="10" fill="#475569">nose.y &lt; 0.3</text>
+  <text x="930" y="505" text-anchor="middle" font-size="10" fill="#475569">= jump = True</text>
+  <text x="930" y="517" text-anchor="middle" font-size="9" fill="#9a3412" font-style="italic">web mode only</text>
+
+  <!-- Arrows into AI section -->
+  <line x1="400" y1="347" x2="400" y2="406" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arr-purple)"/>
+  <line x1="870" y1="347" x2="870" y2="400" stroke="#f97316" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="870" y1="400" x2="660" y2="430" stroke="#f97316" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-orange)"/>
+  <!-- MediaPipe to landmarks -->
+  <line x1="630" y1="465" x2="658" y2="465" stroke="#9333ea" stroke-width="1.5" marker-end="url(#arr-purple)"/>
+
+  <!-- SECTION 4: DECISION -->
+  <rect x="30" y="565" width="1040" height="120" rx="12" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5" filter="url(#section-shadow)"/>
+  <text x="55" y="585" font-size="11" font-weight="700" fill="#f97316" letter-spacing="2">DECISION LOGIC</text>
+
+  <!-- Lane classifier -->
+  <rect x="100" y="593" width="560" height="80" rx="10" fill="white" stroke="#f97316" stroke-width="2" filter="url(#card-shadow)"/>
+  <text x="380" y="616" text-anchor="middle" font-size="14" font-weight="700" fill="#c2410c">Lane Classifier</text>
+  <rect x="160" y="624" width="100" height="34" rx="4" fill="#dbeafe"/>
+  <text x="210" y="639" text-anchor="middle" font-size="11" font-weight="600" fill="#1d4ed8">Lane 0 (LEFT)</text>
+  <text x="210" y="653" text-anchor="middle" font-size="10" fill="#3b82f6">body center x &lt; 0.38</text>
+  <rect x="280" y="624" width="100" height="34" rx="4" fill="#dcfce7"/>
+  <text x="330" y="639" text-anchor="middle" font-size="11" font-weight="600" fill="#15803d">Lane 1 (CENTER)</text>
+  <text x="330" y="653" text-anchor="middle" font-size="10" fill="#16a34a">0.38 to 0.62</text>
+  <rect x="400" y="624" width="100" height="34" rx="4" fill="#fce7f3"/>
+  <text x="450" y="639" text-anchor="middle" font-size="11" font-weight="600" fill="#9d174d">Lane 2 (RIGHT)</text>
+  <text x="450" y="653" text-anchor="middle" font-size="10" fill="#be185d">body center x &gt; 0.62</text>
+  <text x="560" y="643" text-anchor="middle" font-size="20">&#8596;</text>
+
+  <!-- WebSocket response card (web) -->
+  <rect x="700" y="593" width="350" height="80" rx="10" fill="white" stroke="#f97316" stroke-width="2" stroke-dasharray="6,3" filter="url(#card-shadow)"/>
+  <text x="875" y="614" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">WebSocket Response</text>
+  <text x="875" y="632" text-anchor="middle" font-size="11" fill="#475569">{ lane: 0|1|2,  jump: true|false,</text>
+  <text x="875" y="648" text-anchor="middle" font-size="11" fill="#475569">  image: annotated JPEG base64 }</text>
+  <text x="875" y="664" text-anchor="middle" font-size="9" fill="#9a3412" font-style="italic">sent back to browser every frame</text>
+
+  <!-- Arrows into decision from AI -->
+  <line x1="400" y1="533" x2="400" y2="591" stroke="#f97316" stroke-width="2" marker-end="url(#arr-orange)"/>
+  <line x1="930" y1="533" x2="930" y2="562" stroke="#f97316" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="930" y1="562" x2="875" y2="591" stroke="#f97316" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-orange)"/>
+
+  <!-- SECTION 5: GAME ENGINE -->
+  <rect x="30" y="705" width="1040" height="200" rx="12" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5" filter="url(#section-shadow)"/>
+  <text x="55" y="725" font-size="11" font-weight="700" fill="#10b981" letter-spacing="2">GAME ENGINE  --  PYGAME @ 60 FPS  (1280 x 720)</text>
+
+  <!-- Game Manager -->
+  <rect x="55" y="733" width="200" height="155" rx="10" fill="white" stroke="#10b981" stroke-width="2" filter="url(#card-shadow)"/>
+  <text x="155" y="758" text-anchor="middle" font-size="13" font-weight="700" fill="#065f46">Game Manager</text>
+  <text x="155" y="774" text-anchor="middle" font-size="10" fill="#475569">game.py</text>
+  <line x1="65" y1="780" x2="245" y2="780" stroke="#d1fae5" stroke-width="1"/>
+  <text x="155" y="795" text-anchor="middle" font-size="10" fill="#374151">Speed ramp-up</text>
+  <text x="155" y="811" text-anchor="middle" font-size="10" fill="#374151">Obstacle spawn timer</text>
+  <text x="155" y="827" text-anchor="middle" font-size="10" fill="#374151">Collision detection</text>
+  <text x="155" y="843" text-anchor="middle" font-size="10" fill="#374151">Score += 1 per frame</text>
+  <rect x="70" y="852" width="170" height="18" rx="4" fill="#dcfce7"/>
+  <text x="155" y="864" text-anchor="middle" font-size="9" fill="#065f46">spritecollide() check</text>
+
+  <!-- Player -->
+  <rect x="290" y="733" width="200" height="155" rx="10" fill="white" stroke="#10b981" stroke-width="2" filter="url(#card-shadow)"/>
+  <text x="390" y="758" text-anchor="middle" font-size="13" font-weight="700" fill="#065f46">Player</text>
+  <text x="390" y="774" text-anchor="middle" font-size="10" fill="#475569">player.py</text>
+  <line x1="300" y1="780" x2="480" y2="780" stroke="#d1fae5" stroke-width="1"/>
+  <text x="390" y="795" text-anchor="middle" font-size="10" fill="#374151">3 lanes (0, 1, 2)</text>
+  <text x="390" y="811" text-anchor="middle" font-size="10" fill="#374151">Smooth lerp animation</text>
+  <text x="390" y="827" text-anchor="middle" font-size="10" fill="#374151">12 px/frame slide speed</text>
+  <text x="390" y="843" text-anchor="middle" font-size="10" fill="#374151">PyGame Sprite</text>
+  <rect x="305" y="852" width="170" height="18" rx="4" fill="#dcfce7"/>
+  <text x="390" y="864" text-anchor="middle" font-size="9" fill="#065f46">set_lane(0 | 1 | 2)</text>
+
+  <!-- Obstacles -->
+  <rect x="525" y="733" width="200" height="155" rx="10" fill="white" stroke="#10b981" stroke-width="2" filter="url(#card-shadow)"/>
+  <text x="625" y="758" text-anchor="middle" font-size="13" font-weight="700" fill="#065f46">Obstacles</text>
+  <text x="625" y="774" text-anchor="middle" font-size="10" fill="#475569">obstacle.py</text>
+  <line x1="535" y1="780" x2="715" y2="780" stroke="#d1fae5" stroke-width="1"/>
+  <text x="625" y="795" text-anchor="middle" font-size="10" fill="#374151">Random lane spawn</text>
+  <text x="625" y="811" text-anchor="middle" font-size="10" fill="#374151">Start speed: 6 px/frame</text>
+  <text x="625" y="827" text-anchor="middle" font-size="10" fill="#374151">+0.002 speed per frame</text>
+  <text x="625" y="843" text-anchor="middle" font-size="10" fill="#374151">Spawn rate decreases</text>
+  <rect x="540" y="852" width="170" height="18" rx="4" fill="#dcfce7"/>
+  <text x="625" y="864" text-anchor="middle" font-size="9" fill="#065f46">scroll down, kill when off-screen</text>
+
+  <!-- Pygame Renderer -->
+  <rect x="760" y="733" width="280" height="155" rx="10" fill="white" stroke="#10b981" stroke-width="2.5" filter="url(#card-shadow)"/>
+  <text x="900" y="758" text-anchor="middle" font-size="13" font-weight="700" fill="#065f46">Pygame Renderer</text>
+  <text x="900" y="774" text-anchor="middle" font-size="10" fill="#475569">game.py  Game.draw()</text>
+  <line x1="770" y1="780" x2="1030" y2="780" stroke="#d1fae5" stroke-width="1"/>
+  <text x="900" y="795" text-anchor="middle" font-size="10" fill="#374151">Road + scrolling lane dividers</text>
+  <text x="900" y="811" text-anchor="middle" font-size="10" fill="#374151">All sprites: player + obstacles</text>
+  <text x="900" y="827" text-anchor="middle" font-size="10" fill="#374151">HUD: score + speed banner</text>
+  <text x="900" y="843" text-anchor="middle" font-size="10" fill="#374151">Game Over overlay</text>
+  <rect x="775" y="852" width="270" height="18" rx="4" fill="#dcfce7"/>
+  <text x="900" y="864" text-anchor="middle" font-size="9" fill="#065f46">1280 x 720  pygame.display.flip()</text>
+
+  <!-- Arrows from Lane Classifier into game engine -->
+  <line x1="270" y1="673" x2="155" y2="731" stroke="#10b981" stroke-width="2" marker-end="url(#arr-green)"/>
+  <line x1="355" y1="673" x2="390" y2="731" stroke="#10b981" stroke-width="2" marker-end="url(#arr-green)"/>
+  <line x1="430" y1="673" x2="625" y2="731" stroke="#10b981" stroke-width="2" marker-end="url(#arr-green)"/>
+  <rect x="240" y="682" width="100" height="18" rx="5" fill="#dcfce7"/>
+  <text x="290" y="694" text-anchor="middle" font-size="10" font-weight="600" fill="#065f46">lane (0 / 1 / 2)</text>
+
+  <!-- Internal game arrows -->
+  <line x1="255" y1="810" x2="288" y2="810" stroke="#10b981" stroke-width="1.5" marker-end="url(#arr-green)"/>
+  <line x1="490" y1="810" x2="523" y2="810" stroke="#10b981" stroke-width="1.5" marker-end="url(#arr-green)"/>
+  <line x1="725" y1="810" x2="758" y2="810" stroke="#10b981" stroke-width="1.5" marker-end="url(#arr-green)"/>
+
+  <!-- LEGEND -->
+  <rect x="30" y="920" width="1040" height="80" rx="10" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="55" y="942" font-size="11" font-weight="700" fill="#475569" letter-spacing="2">LEGEND</text>
+  <rect x="55" y="952" width="14" height="14" rx="3" fill="#3b82f6"/>
+  <text x="75" y="963" font-size="11" fill="#374151">Local Mode  (Pygame desktop)</text>
+  <rect x="290" y="952" width="14" height="14" rx="3" fill="#f97316"/>
+  <text x="310" y="963" font-size="11" fill="#374151">Web Mode  (Browser + FastAPI)</text>
+  <rect x="545" y="952" width="14" height="14" rx="3" fill="#9333ea"/>
+  <text x="565" y="963" font-size="11" fill="#374151">Shared AI Pipeline</text>
+  <line x1="710" y1="959" x2="740" y2="959" stroke="#f97316" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="750" y="963" font-size="11" fill="#374151">Web-only path</text>
+  <line x1="875" y1="959" x2="905" y2="959" stroke="#10b981" stroke-width="2"/>
+  <text x="915" y="963" font-size="11" fill="#374151">Game data flow</text>
+  <text x="55" y="988" font-size="10" fill="#64748b">MediaPipe Pose (33 landmarks)  |  Hip-based lane detection (L/C/R)  |  Nose-based jump  |  FastAPI WebSocket server  |  Pygame 60 FPS renderer</text>
+</svg>
