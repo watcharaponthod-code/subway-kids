@@ -1,0 +1,8 @@
+**/node_modules
+**/.next
+**/__pycache__
+**/*.pyc
+**/.env*
+**/README.md
+.git
+.gitignore
