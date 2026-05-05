@@ -8,6 +8,8 @@ A **Subway Surfers**-style game controlled by your **body movements** via webcam
 
 ![Demo Gameplay](demo/demo-gameplay.gif)
 
+![Demo Gameplay 2](demo/demo-gameplay-2.gif)
+
 ---
 
 ## ML Data Flow Architecture
